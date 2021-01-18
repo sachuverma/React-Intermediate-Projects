@@ -12,12 +12,12 @@ const AppProvider = ({ children }) => {
 
   const fetchMovies = async (url) => {
     setIsLoading(true);
-    console.log(url);
+    // console.log(url);
 
     try {
       const res = await fetch(url);
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       if (data.Response === "True") {
         setMovies(data.Search);
         setError({ show: false, msg: "" });
@@ -34,7 +34,7 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     fetchMovies(`${API_ENDPOINT}&s=${query}`);
-  }, []);
+  }, [query]);
 
   return (
     <AppContext.Provider
